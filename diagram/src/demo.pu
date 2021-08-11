@@ -1,5 +1,5 @@
 @startuml
-!theme owl from ../../design/themes/
+!theme owl from ../../themes/
 title "Systems"
 !$ep = "/fvs/:id"
 
@@ -26,7 +26,7 @@ return user
 
 @startuml
 title participants
-!theme owl from ../../design/themes/
+!theme owl from ../../themes/
 
 participant Participant
 actor       Actor
@@ -42,7 +42,7 @@ queue       Queue
 
 @startuml
 title Angular Components
-!theme owl from ../../design/themes/
+!theme owl from ../../themes/
 ' Component, Template, Directive, Pipe, Authguard, Service, Module
 
 component Component <<Component>>
@@ -57,7 +57,7 @@ component Resolver <<Resolver>>
 
 @startuml
 title Sequece
-!theme owl from ../../design/themes/
+!theme owl from ../../themes/
 
 participant UI <<UI>>
 participant API <<API>>
@@ -81,7 +81,7 @@ endnote
 @enduml
 
 @startuml
-!theme owl from ../../design/themes/
+!theme owl from ../../themes/
 
 title Angular Module
 
@@ -95,7 +95,7 @@ package Module {
 @enduml
 
 @startuml
-!theme owl from ../../design/themes/
+!theme owl from ../../themes/
 
 title Angular Sequence
 
