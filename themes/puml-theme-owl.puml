@@ -1,0 +1,230 @@
+''
+'' The owl theme 
+'' Author Jonathan Baldwin
+''
+
+!$defaultBackgroundColor = "#eeeeee"
+!$defaultBorderColor = %darken($defaultBackgroundColor, 50)
+!$defaultFontColor = %darken($defaultBackgroundColor, 80)
+!$defaultArrowColor = "#4a148c"
+
+
+' ====== HTTP ======
+!startsub HTTP
+' swagger colors
+!$GET = "#61affe"
+!$POST = "#49cc90"
+!$PUT = "#fca130"
+!$PATCH = "#50e3c2"
+!$DELETE = "#f93e3e"
+
+!procedure $http($verb, $endpoint, $body="")
+!$isPost = %lower($verb) == 'post'
+!$isPut = %lower($verb) == 'put'
+!$isPatch = %lower($verb) == 'patch'
+!$isDelete = %lower($verb) == 'delete'
+!$isGet = %lower($verb) == 'get'
+!if ($isPost) 
+$post($endpoint, $body)
+!elseif ($isPut)
+$put($endpoint)
+!elseif ($isPatch)
+$patch($endpoint)
+!elseif ($isDelete)
+$delete($endpoint)
+!else
+$get($endpoint)
+!endif
+!endprocedure
+
+!procedure $get($endpoint)
+A -> S: <font color=$GET>**GET** <font color=black>$endpoint
+!endprocedure
+
+!procedure $post($endpoint, $body)
+A -> S: <font color=$POST>**POST** <font color=black>$endpoint
+!endprocedure
+
+!procedure $put($endpoint)
+A -> S: <font color=$PUT>**PUT** <font color=black>$endpoint
+!endprocedure
+
+!procedure $patch($endpoint)
+A -> S: <font color=$PATCH>**PATCH** <font color=black>$endpoint
+!endprocedure
+
+!procedure $delete($endpoint)
+A -> S: <font color=$DELETE>**DELETE** <font color=black>$endpoint
+!endprocedure
+!endsub
+
+' Default Colors
+skinparam BackgroundColor #FFFFFF
+skinparam BorderColor $defaultBorderColor
+skinparam FontColor $defaultFontColor
+skinparam shadowing false
+skinparam RoundCorner 7
+
+skinparam ArrowColor $defaultArrowColor
+skinparam ArrowHeadColor red
+skinparam ArrowLollipopColor orange
+
+skinparam SequenceLifeLineBorderColor 696969
+
+skinparam SequenceGroup {
+    ' BodyBackgroundColor
+    ' BackgroundColor
+    BorderColor 696969
+    BorderThickness 1
+
+    HeaderFontColor 454645
+    FontColor 696969
+}
+
+skinparam sequenceDivider {
+    BorderColor 454645
+    BorderThickness 1
+    FontColor 454645
+}
+
+' ====== Systems ======
+!startsub systems
+
+!$Angular = "#e53935"
+!$SpringBoot = "#6db33f"
+!$PostreSQL = "#336791"
+!$Cognito = "#643f53"
+!$Ruby = "#ac1105"
+
+!$UIBackgroundColor = $Angular
+!$APIBackgroundColor = $SpringBoot
+!$DatabaseBackgroundColor = $PostreSQL
+!$AuthenticationBackgroundColor = $Cognito
+
+skinparam participant {
+    BackgroundColor $defaultBackgroundColor
+    BorderColor $defaultBorderColor
+
+    BackgroundColor<<Database>> $DatabaseBackgroundColor/white
+    BorderColor<<Database>> %darken($DatabaseBackgroundColor, 50)
+
+    BackgroundColor<<API>> $APIBackgroundColor/white
+    BorderColor<<API>> %darken($APIBackgroundColor, 50)
+
+    BackgroundColor<<UI>> $UIBackgroundColor/white
+    BorderColor<<UI>> %darken($UIBackgroundColor, 50)
+
+    BackgroundColor<<Authentication>> $AuthenticationBackgroundColor/white
+    BorderColor<<Authentication>> %darken($AuthenticationBackgroundColor, 50)
+}
+!endsub
+
+skinparam database {
+    BackgroundColor 00FFFF
+    BorderColor 454645
+    FontColor 454645
+}
+
+skinparam entity {
+    BackgroundColor FFE552
+    BorderColor 454645
+    FontColor 454645
+}
+
+skinparam note {
+    BackgroundColor 7FFFD4
+    BorderColor 7FFFD4
+    FontColor 454645
+}
+
+skinparam actor {
+    BackgroundColor 454645
+    BorderColor 454645
+    FontColor 454645
+}
+
+skinparam boundary {
+    BackgroundColor FFE552
+    BorderColor 454645
+    FontColor 454645
+}
+
+skinparam control {
+    BackgroundColor FFE552
+    BorderColor 454645
+    FontColor 454645
+}
+
+skinparam collections {
+    BackgroundColor FF6347
+    BorderColor FFFFFF
+    FontColor 454645
+}
+
+skinparam queue {
+    BackgroundColor $defaultBackgroundColor
+    BorderColor $defaultBorderColor
+}
+
+' =======  Angular =======
+' Component, Template, Directive, Pipe, Authguard, Service, Module
+!startsub Angular
+
+!$Angular = "#e53935"
+!$AngularTemplate = "#e44d26"
+!$AngularComponent = "#0288d1"
+!$AngularDirective = "#ab47bc"
+!$AngularPipe = "#00897b"
+!$AngularGuard = "#43a047"
+!$AngularService = "#ffca28"
+!$AngularResolver = "#43a047"
+!$AngularModule = $Angular
+
+
+skinparam component {
+    BackgroundColor<<Component>> $AngularComponent
+    BorderColor<<Component>> %darken($AngularComponent, 50)
+
+    BackgroundColor<<Template>> $AngularTemplate
+    BorderColor<<Template>> %darken($AngularTemplate, 50)
+
+    BackgroundColor<<Directive>> $AngularDirective
+    BorderColor<<Directive>> %darken($AngularDirective, 50)
+
+    BackgroundColor<<Pipe>> $AngularPipe
+    BorderColor<<Pipe>> %darken($AngularPipe, 50)
+
+    BackgroundColor<<Guard>> $AngularGuard
+    BorderColor<<Guard>> %darken($AngularGuard, 50)
+
+    BackgroundColor<<Service>> $AngularService
+    BorderColor<<Service>> %darken($AngularService, 50)
+
+    BackgroundColor<<Resolver>> $AngularResolver
+    BorderColor<<Resolver>> %darken($AngularResolver, 50)
+}
+
+skinparam participant {
+    BackgroundColor<<Component>> $AngularComponent
+    BorderColor<<Component>> %darken($AngularComponent, 50)
+
+    BackgroundColor<<Template>> $AngularTemplate
+    BorderColor<<Template>> %darken($AngularTemplate, 50)
+
+    BackgroundColor<<Directive>> $AngularDirective
+    BorderColor<<Directive>> %darken($AngularDirective, 50)
+
+    BackgroundColor<<Pipe>> $AngularPipe
+    BorderColor<<Pipe>> %darken($AngularPipe, 50)
+
+    BackgroundColor<<Guard>> $AngularGuard
+    BorderColor<<Guard>> %darken($AngularGuard, 50)
+
+    BackgroundColor<<Service>> $AngularService
+    BorderColor<<Service>> %darken($AngularService, 50)
+
+    BackgroundColor<<Resolver>> $AngularResolver
+    BorderColor<<Resolver>> %darken($AngularResolver, 50)
+}
+!endsub
+

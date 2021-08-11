@@ -1,0 +1,112 @@
+@startuml
+!theme owl from ../../design/themes/
+title "Systems"
+!$ep = "/fvs/:id"
+
+participant Angular as A <<UI>>
+participant Cognito as C <<Authentication>>
+participant SringBoot as S <<API>>
+participant PostgreSQL as P<<Database>>
+autoactivate on
+
+A -> C: enter?
+return Access Token
+$http("get", $ep)
+$http("put", $ep)
+$http("post", $ep)
+$http("post", $ep)
+$http("patch", $ep)
+$http("delete", $ep)
+
+S -> P: Select user
+return user
+return user
+
+@enduml
+
+@startuml
+title participants
+!theme owl from ../../design/themes/
+
+participant Participant
+actor       Actor
+boundary    Boundary
+control     Control
+entity      Entity
+database    Database
+collections Collections
+queue       Queue
+
+
+@enduml
+
+@startuml
+title Angular Components
+!theme owl from ../../design/themes/
+' Component, Template, Directive, Pipe, Authguard, Service, Module
+
+component Component <<Component>>
+component Template <<Template>>
+component Directive <<Directive>>
+component Pipe <<Pipe>>
+component AuthGuard <<Guard>>
+component Service <<Service>>
+component Resolver <<Resolver>>
+
+@enduml
+
+@startuml
+title Sequece
+!theme owl from ../../design/themes/
+
+participant UI <<UI>>
+participant API <<API>>
+participant Database <<Database>>
+participant Authentication <<Authentication>>
+participant weedService <<Service>>
+group newpage
+    UI -> API: GET pages
+end
+
+alt some
+    UI o-> API: What?
+else later
+    API -->o UI: respone
+end
+==new==
+note left
+    if then statement
+endnote
+
+@enduml
+
+@startuml
+!theme owl from ../../design/themes/
+
+title Angular Module
+
+component Service <<Service>>
+package Module {
+    component Component <<Component>>
+    component Pipe <<Pipe>>
+    component Directive <<Directive>>
+}
+
+@enduml
+
+@startuml
+!theme owl from ../../design/themes/
+
+title Angular Sequence
+
+    participant Component <<Component>>
+    participant Pipe <<Pipe>>
+    participant Directive <<Directive>>
+    participant Service <<Service>>
+    participant Guard <<Guard>>
+    participant Resolver <<Resolver>>
+    participant Template <<Template>>
+
+@enduml
+
+	
