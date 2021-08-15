@@ -19,22 +19,23 @@
 !$DELETE = "#f93e3e"
 
 !procedure $http($verb, $endpoint, $body="")
-!$isPost = %lower($verb) == 'post'
-!$isPut = %lower($verb) == 'put'
-!$isPatch = %lower($verb) == 'patch'
-!$isDelete = %lower($verb) == 'delete'
-!$isGet = %lower($verb) == 'get'
-!if ($isPost) 
-$post($endpoint, $body)
-!elseif ($isPut)
-$put($endpoint)
-!elseif ($isPatch)
-$patch($endpoint)
-!elseif ($isDelete)
-$delete($endpoint)
-!else
-$get($endpoint)
-!endif
+    !$isPost = %lower($verb) == 'post'
+    !$isPut = %lower($verb) == 'put'
+    !$isPatch = %lower($verb) == 'patch'
+    !$isDelete = %lower($verb) == 'delete'
+    !$isGet = %lower($verb) == 'get'
+    ''
+    !if ($isPost) 
+        $post($endpoint, $body)
+    !elseif ($isPut)
+        $put($endpoint)
+    !elseif ($isPatch)
+        $patch($endpoint)
+    !elseif ($isDelete)
+        $delete($endpoint)
+    !else
+        $get($endpoint)
+    !endif
 !endprocedure
 
 !procedure $get($endpoint)
@@ -100,6 +101,35 @@ skinparam sequenceDivider {
 !$APIBackgroundColor = $SpringBoot
 !$DatabaseBackgroundColor = $PostreSQL
 !$AuthenticationBackgroundColor = $Cognito
+
+
+!procedure $system()
+    $user()
+    $ui()
+    $auth()
+    $api()
+    $db()
+!endprocedure
+
+!procedure $user($role=Any)
+    actor $role as U <<User>>
+!endprocedure
+
+!procedure $auth($service=Cognito)
+    participant $service as C <<Authentication>>
+!endprocedure
+
+!procedure $ui($framework=Angular)
+    participant $framework as A <<UI>>
+!endprocedure
+
+!procedure $api($provider=SprintBoot)
+    participant $provider as S <<API>>
+!endprocedure
+
+!procedure $db($dataStore=PostgreSQL)
+    participant $dataStore as P <<Database>>
+!endprocedure
 
 skinparam participant {
     BackgroundColor $defaultBackgroundColor
