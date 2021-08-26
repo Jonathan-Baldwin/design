@@ -1,5 +1,5 @@
 @startuml
-!theme owl from ../../themes/
+!theme owl from ../themes/
 title "Systems"
 !$ep = "/fvs/:id"
 
@@ -29,7 +29,7 @@ return user
 
 @startuml
 title participants
-!theme owl from ../../themes/
+!theme owl from ../themes
 
 participant Participant
 actor       Actor
@@ -45,7 +45,7 @@ queue       Queue
 
 @startuml
 title Angular Components
-!theme owl from ../../themes/
+!theme owl from ../themes/
 ' Component, Template, Directive, Pipe, Authguard, Service, Module
 
 component Component <<Component>>
@@ -60,7 +60,7 @@ component Resolver <<Resolver>>
 
 @startuml
 title Sequece
-!theme owl from ../../themes/
+!theme owl from ../themes/
 
 participant UI <<UI>>
 participant API <<API>>
@@ -98,7 +98,7 @@ package Module {
 @enduml
 
 @startuml
-!theme owl from ../../themes/
+!theme owl from ../themes/
 
 title Angular Sequence
 
@@ -112,4 +112,69 @@ title Angular Sequence
 
 @enduml
 
-	
+
+@startuml
+title themeBuilder
+!theme groot from ../themes
+
+rectangle fgcolor $fgcolor 
+
+rectangle primary_dark $primary_dark 
+rectangle primary $primary 
+rectangle primary_light $primary_light 
+rectangle primary_text $primary_text
+
+rectangle secondary_dark $secondary_dark 
+rectangle secondary $secondary 
+rectangle secondary_light $secondary_light 
+rectangle secondary_text $secondary_text 
+
+rectangle info_dark $info_dark 
+rectangle info $info 
+rectangle info_light $info_light 
+rectangle info_text $info_text 
+
+rectangle success_dark $success_dark 
+rectangle success $success 
+rectangle success_light $success_light 
+rectangle success_text $success_text
+
+rectangle warning_dark $warning_dark 
+rectangle warning $warning 
+rectangle warning_light $warning_light 
+rectangle warning_text $warning_text 
+
+rectangle danger_dark $danger_dark 
+rectangle danger $danger 
+rectangle danger_light $danger_light 
+rectangle danger_text $danger_text 
+
+rectangle dark_dark $dark_dark 
+rectangle dark_light $dark_light 
+rectangle light_dark $light_dark 
+rectangle light_light $light_light 
+
+@enduml
+
+@startuml
+title more theme
+!theme groot from ../themes
+
+participant Component <<component>>
+participant template <<template>>
+participant directive <<directive>>
+participant pipe <<pipe>>
+participant guard <<guard>>
+participant service <<service>>
+participant resolver <<resolver>>
+
+
+
+
+
+
+
+
+
+
+@enduml
