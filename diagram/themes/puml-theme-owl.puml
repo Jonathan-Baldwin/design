@@ -9,54 +9,58 @@
 !$defaultArrowColor = "#4a148c"
 
 
+' TODO: Add color constants
+
+' TODO Move subparts to end of file
+
 ' ====== HTTP ======
 !startsub HTTP
-' swagger colors
-!$GET = "#61affe"
-!$POST = "#49cc90"
-!$PUT = "#fca130"
-!$PATCH = "#50e3c2"
-!$DELETE = "#f93e3e"
+    ' swagger colors
+    !$GET = "#61affe"
+    !$POST = "#49cc90"
+    !$PUT = "#fca130"
+    !$PATCH = "#50e3c2"
+    !$DELETE = "#f93e3e"
 
-!procedure $http($verb, $endpoint, $body="")
-    !$isPost = %lower($verb) == 'post'
-    !$isPut = %lower($verb) == 'put'
-    !$isPatch = %lower($verb) == 'patch'
-    !$isDelete = %lower($verb) == 'delete'
-    !$isGet = %lower($verb) == 'get'
-    ''
-    !if ($isPost) 
-        $post($endpoint, $body)
-    !elseif ($isPut)
-        $put($endpoint)
-    !elseif ($isPatch)
-        $patch($endpoint)
-    !elseif ($isDelete)
-        $delete($endpoint)
-    !else
-        $get($endpoint)
-    !endif
-!endprocedure
+    !procedure $http($verb, $endpoint, $body="")
+        !$isPost = %lower($verb) == 'post'
+        !$isPut = %lower($verb) == 'put'
+        !$isPatch = %lower($verb) == 'patch'
+        !$isDelete = %lower($verb) == 'delete'
+        !$isGet = %lower($verb) == 'get'
+        ''
+        !if ($isPost) 
+            $post($endpoint, $body)
+        !elseif ($isPut)
+            $put($endpoint)
+        !elseif ($isPatch)
+            $patch($endpoint)
+        !elseif ($isDelete)
+            $delete($endpoint)
+        !else
+            $get($endpoint)
+        !endif
+    !endprocedure
+    ' TODO: make these functions
+    !procedure $get($endpoint)
+    A -> S: <font color=$GET>**GET** <font color=black>$endpoint
+    !endprocedure
 
-!procedure $get($endpoint)
-A -> S: <font color=$GET>**GET** <font color=black>$endpoint
-!endprocedure
+    !procedure $post($endpoint, $body)
+    A -> S: <font color=$POST>**POST** <font color=black>$endpoint
+    !endprocedure
 
-!procedure $post($endpoint, $body)
-A -> S: <font color=$POST>**POST** <font color=black>$endpoint
-!endprocedure
+    !procedure $put($endpoint)
+    A -> S: <font color=$PUT>**PUT** <font color=black>$endpoint
+    !endprocedure
 
-!procedure $put($endpoint)
-A -> S: <font color=$PUT>**PUT** <font color=black>$endpoint
-!endprocedure
+    !procedure $patch($endpoint)
+    A -> S: <font color=$PATCH>**PATCH** <font color=black>$endpoint
+    !endprocedure
 
-!procedure $patch($endpoint)
-A -> S: <font color=$PATCH>**PATCH** <font color=black>$endpoint
-!endprocedure
-
-!procedure $delete($endpoint)
-A -> S: <font color=$DELETE>**DELETE** <font color=black>$endpoint
-!endprocedure
+    !procedure $delete($endpoint)
+    A -> S: <font color=$DELETE>**DELETE** <font color=black>$endpoint
+    !endprocedure
 !endsub
 
 ' Default Colors
