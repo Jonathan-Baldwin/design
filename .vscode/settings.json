@@ -1,4 +1,6 @@
 {
     "plantuml.exportOutDir": "diagram/out",
-    "plantuml.diagramsRoot": "diagram/src"
+    "plantuml.diagramsRoot": "diagram/src",
+    "editor.renderWhitespace": "all",
+    
 }
