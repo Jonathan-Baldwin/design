@@ -83,11 +83,6 @@
   !$danger_light = $lighten($danger)
   !$danger_text = $white
 
-  !$dark_dark = "#717d89"
-  !$dark_light = "#3e4a56"
-  !$light_dark = "#bcc5ce"
-  !$light_light = "#89929b"
-
 !endsub
 
 
@@ -96,31 +91,31 @@
   ''
   '' Global Default Values
   ''
-  skinparam dpi                   92
-  skinparam shadowing             false
-  skinparam roundcorner           7
-  skinparam ParticipantPadding    10
-  skinparam BoxPadding            20
-  skinparam Padding               5
-  skinparam ArrowColor            $dark
+  skinparam dpi                     92
+  skinparam shadowing               false
+  skinparam roundcorner             7
+  skinparam ParticipantPadding      10
+  skinparam BoxPadding              20
+  skinparam Padding                 5
+  skinparam ArrowColor              $dark
 
   skinparam stereotype {
-      CBackgroundColor  $secondary_light
-      CBorderColor      $secondary_dark
-      ABackgroundColor  $success_light
-      ABorderColor      $success_dark
-      IBackgroundColor  $danger_light
-      IBorderColor      $danger_dark
-      EBackgroundColor  $warning_light
-      EBorderColor      $warning_dark
-      NBackgroundColor  $info_light
-      NBorderColor      $info_dark
+      CBackgroundColor              $secondary_light
+      CBorderColor                  $secondary_dark
+      ABackgroundColor              $success_light
+      ABorderColor                  $success_dark
+      IBackgroundColor              $danger_light
+      IBorderColor                  $danger_dark
+      EBackgroundColor              $warning_light
+      EBorderColor                  $warning_dark
+      NBackgroundColor              $info_light
+      NBorderColor                  $info_dark
   }
 
   skinparam legend {
-    BackgroundColor     $secondary
-    BorderColor         $secondary_dark
-    FontColor           $white
+    BackgroundColor                 $secondary
+    BorderColor                     $secondary_dark
+    FontColor                       $white
   }
 
   !procedure $primary_scheme()
@@ -133,34 +128,35 @@
 !startsub sequence
    skinparam sequence {
     ''
-    BoxBackgroundColor $bgcolor
-    BoxBorderColor $dark
-    BoxFontColor $dark
+    BoxBackgroundColor              $bgcolor
+    BoxBorderColor                  $dark
+    BoxFontColor                    $dark
     
     ''
-    LifeLineBorderColor $secondary
-    LifeLineBorderThickness 2
-    LifeLineBackgroundColor $secondary_dark
+    LifeLineBorderColor             $secondary
+    LifeLineBorderThickness         2
+    LifeLineBackgroundColor         $secondary_dark
     ''
-    GroupBackgroundColor $secondary
-    GroupBorderColor $dark
-    GroupFontColor $dark
-    GroupHeaderFontColor $info
-    GroupHeaderBackgroundColor $bgcolor
-    GroupBodyBackgroundColor $white
-    GroupBorderThickness 1
-    ''
-    DividerBackgroundColor $dark
-    DividerBorderColor $dark
-    DividerBorderThickness 2
-    DividerFontColor $light
-    ''
-    ReferenceBackgroundColor $bgcolor
-    ReferenceBorderColor $dark
-    ReferenceFontColor $dark
-    ReferenceHeaderFontColor $info
-    ReferenceHeaderBackgroundColor $secondary
+    GroupBackgroundColor            $secondary
+    GroupBorderColor                $dark
+    GroupFontColor                  $dark
+    GroupHeaderFontColor            $info
+    GroupHeaderBackgroundColor      $bgcolor
+    GroupBodyBackgroundColor        $white
+    GroupBorderThickness            1
+    ''  
+    DividerBackgroundColor          $dark
+    DividerBorderColor              $dark
+    DividerBorderThickness          2
+    DividerFontColor                $light
+    ''  
+    ReferenceBackgroundColor        $bgcolor
+    ReferenceBorderColor            $dark
+    ReferenceFontColor              $dark
+    ReferenceHeaderFontColor        $info
+    ReferenceHeaderBackgroundColor  $secondary
   }
+
 !endsub
 
 !startsub participant 
@@ -174,11 +170,14 @@
 !startsub HTTP
   ' swagger colors
   ' https://coolors.co/61affe-49cc90-fca130-50e3c2-f93e3e
-  !$GET = "#61affe"
-  !$POST = "#49cc90"
-  !$PUT = "#fca130"
-  !$PATCH = "#50e3c2"
-  !$DELETE = "#f93e3e"
+
+  !$rest = {
+    "get"     :   "#61affe",
+    "post"    :   "#49cc90",
+    "put"     :   "#fca130",
+    "patch"   :   "#50e3c2",
+    "delete"  :   "#f93e3e"
+  }
 
   !procedure $http($verb, $endpoint, $body="")
     !$isPost = %lower($verb) == 'post'
@@ -200,23 +199,23 @@
   !endprocedure
 
   !function $get($endpoint)
-    !return "<font color=" + $GET + ">**GET** <font color=black>" + $endpoint
+    !return "<font color=" + $rest.get + ">**GET** <font color=black>" + $endpoint
   !endfunction
 
   !function $post($endpoint, $body)
-    !return "<font color=" + $POST + ">**POST** <font color=black>" + $endpoint
+    !return "<font color=" + $rest.post + ">**POST** <font color=black>" + $endpoint
   !endfunction
 
   !function $put($endpoint)
-    !return "<font color=" + $PUT + ">**PUT** <font color=black>" + $endpoint
+    !return "<font color=" + $rest.put + ">**PUT** <font color=black>" + $endpoint
   !endfunction
 
   !function $patch($endpoint)
-    !return "<font color=" + $PATCH + ">**PATCH** <font color=black>" + $endpoint
+    !return "<font color=" + $rest.patch + ">**PATCH** <font color=black>" + $endpoint
   !endfunction
 
   !function $delete($endpoint)
-    !return "<font color=" + $DELETE + ">**DELETE** <font color=black>" + $endpoint
+    !return "<font color=" + $rest.delete + ">**DELETE** <font color=black>" + $endpoint
   !endfunction
 !endsub
 
@@ -227,48 +226,44 @@
   ' https://coolors.co/e53935-0288d1-ab47bc-43a047-00897b-43a047-ffca28-e44d26
 
   !$ng = {
-    "component": "#0288d1",
-    "default": "#e53935",
-    "directive": "#ab47bc",
-    "guard": "#43a047",
-    "pipe": "#00897b",
-    "resolver": "#43a047",
-    "service": "#ffca28",
-    "template": "#e44d26",
-    "module": "#e53935"
+    "component" :   "#ffffff",
+    "default"   :   "#e53935",
+    "directive" :   "#ab47bc",
+    "guard"     :   "#43a047",
+    "pipe"      :   "#00897b",
+    "resolver"  :   "#43a047",
+    "service"   :   "#ffca28",
+    "template"  :   "#e44d26",
+    "module"    :   "#e53935",
+    "text"      :   "#000000"
   }
 
   !procedure $initSterotype($type, $color)
     BackgroundColor<<$type>> $color
     BorderColor<<$type>> %darken($color, 50)
-    ' TODO: switch background based on background
-    ' !if %is_light($color)
-    '   FontColor $black
-    ' !else
-    '   FontColor $white
-    ' !endif
+      FontColor $black
   !endprocedure
 
   skinparam component {
-      $initSterotype("component", $ng.component)
-      $initSterotype("directive", $ng.directive)
-      $initSterotype("guard", $ng.guard)
-      $initSterotype("module", $ng.module)
-      $initSterotype("pipe", $ng.pipe)
-      $initSterotype("resolver", $ng.resolver)
-      $initSterotype("service", $ng.service)
-      $initSterotype("template", $ng.template)
+      $initSterotype("Component", $ng.component)
+      $initSterotype("Directive", $ng.directive)
+      $initSterotype("Guard", $ng.guard)
+      $initSterotype("Module", $ng.module)
+      $initSterotype("Pipe", $ng.pipe)
+      $initSterotype("Resolver", $ng.resolver)
+      $initSterotype("Service", $ng.service)
+      $initSterotype("Template", $ng.template)
   }
 
   skinparam participant {
-      $initSterotype("component", $ng.component)
-      $initSterotype("directive", $ng.directive)
-      $initSterotype("guard", $ng.guard)
-      $initSterotype("module", $ng.module)
-      $initSterotype("pipe", $ng.pipe)
-      $initSterotype("resolver", $ng.resolver)
-      $initSterotype("service", $ng.service)
-      $initSterotype("template", $ng.template)
+      $initSterotype("Component", $ng.component)
+      $initSterotype("Directive", $ng.directive)
+      $initSterotype("Guard", $ng.guard)
+      $initSterotype("Module", $ng.module)
+      $initSterotype("Pipe", $ng.pipe)
+      $initSterotype("Resolver", $ng.resolver)
+      $initSterotype("Service", $ng.service)
+      $initSterotype("Template", $ng.template)
   }
 !endsub
 
