@@ -28,8 +28,8 @@ return user
 @enduml
 
 @startuml
-title participants
-!theme owl from ../themes
+title Sequence Entities
+!theme groot from ../themes
 
 participant Participant
 actor       Actor
@@ -39,6 +39,7 @@ entity      Entity
 database    Database
 collections Collections
 queue       Queue
+
 
 
 @enduml
@@ -149,32 +150,19 @@ rectangle danger $danger
 rectangle danger_light $danger_light 
 rectangle danger_text $danger_text 
 
-rectangle dark_dark $dark_dark 
-rectangle dark_light $dark_light 
-rectangle light_dark $light_dark 
-rectangle light_light $light_light 
-
 @enduml
 
 @startuml
 title more theme
 !theme groot from ../themes
 
-participant Component <<component>>
-participant template <<template>>
-participant directive <<directive>>
-participant pipe <<pipe>>
-participant guard <<guard>>
-participant service <<service>>
-participant resolver <<resolver>>
-
-
-
-
-
-
-
-
+participant Component <<Component>>
+participant template <<Template>>
+participant directive <<Directive>>
+participant pipe <<Pipe>>
+participant guard <<Guard>>
+participant service <<Service>>
+participant resolver <<Resolver>>
 
 
 @enduml
